@@ -1,0 +1,101 @@
+...................................TestController.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using FirstTestProject.Models;
+
+namespace FirstTestProject.Controllers
+{
+    
+
+
+     
+        public class TestController : Controller
+        {
+
+          public ActionResult GetView()
+          {
+            Employee emp = new Employee();
+            emp.FirstName = "Sukesh";
+            emp.LastName = "Marla";
+            emp.Salary = 20000;
+            // ViewData["Employee"] = emp;
+            // return View("MyView");
+           // ViewBag.Employee = emp;
+            return View("MyView",emp);
+
+        }
+        }
+    
+
+
+}
+
+
+..................................Employee.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace FirstTestProject.Models
+{
+    public class Employee
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Salary { get; set; }
+    }
+}
+
+.................................MyView.cshtml
+@model FirstTestProject.Models.Employee                         //This is reference of model in view so that it can access class Employee.
+ @{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyView</title>
+</head>
+<body>
+    <div>
+        Welcome to first session of MVC.
+        @{
+
+            FirstTestProject.Models.Employee emp = (FirstTestProject.Models.Employee)ViewBag.Employee;
+        }
+        <br>
+        Employee Details
+
+        Employee Name : @Model.FirstName @Model.LastName
+
+        @if (Model.Salary > 15000)
+        {
+            <span style="background-color:yellow">
+                Employee Salary: @Model.Salary.ToString("C")
+            </span>
+        }
+        else
+        {
+            <span style="background-color:green">
+
+                Employee Salary: @Model.Salary.ToString("C")
+            </span>
+        }
+    </div>
+</body>
+
+
+This is strongly typed view.
+Here we give reference of model to view so that it can know data is coming from controller.
+
+
+
+

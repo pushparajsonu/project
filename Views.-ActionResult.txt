@@ -1,0 +1,56 @@
+..........................................TestController.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace FirstTestProject.Controllers
+{
+    
+
+
+     
+        public class TestController : Controller
+        {
+
+          public ActionResult GetView()
+          {
+            return View("MyView");
+          }
+        }
+    
+
+
+}
+
+
+.........................................MyView.cshtml
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyView</title>
+</head>
+<body>
+    <div> 
+        Welcome to first session of MVC.
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+Action method is simply a public method inside controller which accepts
+ user’s request and returns some response
+To add a view click on action method
+view will be created inside ControllerName Folder inside view folder.
+views which we want to share with multiple controllers can be put in shared folder

@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace FirstTestProject.Controllers
+{
+    
+
+
+        public class Customer
+        {
+            public string CustomerName { get; set; }
+            public string Address { get; set; }
+        public override string ToString()
+        {
+            return this.CustomerName + "|" + this.Address;
+        }
+    }
+        public class TestController : Controller
+        {
+            public Customer GetCustomer()
+            {
+                Customer c = new Customer();
+                c.CustomerName = "Customer 1";
+                c.Address = "Address1";
+                return c;
+            }
+        
+    }
+    
+
+
+}
+
+
+here we have TestController as Class and Test as Controller name.
+We can access any method publically by calling ControllerName.ActionName (Test/GetCustomer)
+If we try to send object then its send us NameSpace.ClassName
+To view object- we can override ToString() 
+Actionable class can be called from outside (web or url calling)
+But non actionable class cannot  be  called from the outstide world-it will give error
+To make non-actionable class as public we can write as 
+[NonAction]
+public string SimpleMethod()
+{
+    return "Hi, I am not action method";
+}
+
+
+

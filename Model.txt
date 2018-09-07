@@ -1,0 +1,82 @@
+...............................................TestController.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using FirstTestProject.Models;
+
+namespace FirstTestProject.Controllers
+{
+    
+
+
+     
+        public class TestController : Controller
+        {
+
+          public ActionResult GetView()
+          {
+            Employee emp = new Employee();
+            emp.FirstName = "Sukesh";
+            emp.LastName = "Marla";
+            emp.Salary = 20000;
+            ViewData["Employee"] = emp;
+            return View("MyView");
+
+        }
+        }
+    
+
+
+}
+
+.................................................Employee.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace FirstTestProject.Models
+{
+    public class Employee
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Salary { get; set; }
+    }
+}
+
+
+.................................................MyView.cshtml
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyView</title>
+</head>
+<body>
+    <div>
+        Welcome to first session of MVC.
+        @{
+
+            FirstTestProject.Models.Employee emp = (FirstTestProject.Models.Employee)ViewData["Employee"];
+        }
+        <br>
+        <b>Employee Details </b><br />
+        Employee Name : @emp.FirstName@emp.LastName <br />
+        Employee Salary: @emp.Salary.ToString("C")
+    </div>
+</body>
+</html>
+
+First Controller hit the action method
+Action method initialize the members,which will be declared in model at first...we have to declare as using WebApplication1.Models; in controller.
+then after initializing the data members we store the instantiated object in ViewData.
+Then in view we type cast the viewdata to object again and then access the member by object.membername.
